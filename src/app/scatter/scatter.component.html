@@ -1,0 +1,99 @@
+<div class="container">
+    <div>
+        <div>
+            <h1>Event Graph</h1>
+        </div>
+        <div class="example-container mat-elevation-z8">
+            <figure id="scatter"></figure>
+        </div>
+
+        <!-- <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead>
+                <tr>
+                    <th>Event UUID</th>
+                    <th>Event ID</th>
+                    <th>Log Text</th>
+                    <th>Log Pattern</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let group of table_data">
+                    <td>{{group.event_id}}</td>
+                    <td>{{group.event_id_int}}</td>
+                    <td>{{group.log_text}}</td>
+                    <td>{{group.log_pattern_id__expression}}</td>
+                    <td>{{group.readable_time}}</td>
+                </tr>
+            </tbody>
+        </table> -->
+        <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+                <!-- <p style="color: white">Please Wait. </p> -->
+            <div id="spinner">
+                <!-- <div class="yellow"></div>
+                <div class="red"></div>
+                <div class="blue"></div>
+                <div class="violet"></div> -->
+            </div>        
+        </ngx-spinner>
+        
+        <div style="margin-top: 20px">
+            <h1>Event Data</h1>
+        </div>
+        
+        <div class="example-header">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"/>
+            </mat-form-field>
+        </div>
+        
+        <div class="example-container mat-elevation-z8">
+        
+            <mat-table [dataSource]="dataSource" matSort>
+            
+                <!-- ID Column -->
+                <ng-container matColumnDef="event_id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.event_id_int}} </mat-cell>
+                </ng-container>
+            
+                <!-- Progress Column -->
+                <ng-container matColumnDef="event_uuid">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Event UUID </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.event_id}}% </mat-cell>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="pattern">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Pattern </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.log_pattern_id__expression}} </mat-cell>
+                </ng-container>
+            
+                <!-- Color Column -->
+                <ng-container matColumnDef="log_text">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> LogLine </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.log_text}} </mat-cell>
+                </ng-container>
+    
+                <ng-container matColumnDef="time">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Time </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.readable_time}} </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+            
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+
+    </div>
+    
+</div>
+        
+    <!-- </div>
+</div> -->
+
+
+
